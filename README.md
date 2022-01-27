@@ -8,8 +8,8 @@ Requirements...
 ### To Run
 Instructions...
 ### Authors
-Christopher Wilder (cwilder@ggc.edu)
-David Marshall (dmarshall5@ggc.edu)
-Ephrem Engida (eengida@ggc.edu)
-Matteo Kitic (mkitic@ggc.edu)
+<p>Christopher Wilder (cwilder@ggc.edu)</p>
+<p>David Marshall (dmarshall5@ggc.edu)</p>
+<p>Ephrem Engida (eengida@ggc.edu)</p>
+<p>Matteo Kitic (mkitic@ggc.edu)</p>
 
