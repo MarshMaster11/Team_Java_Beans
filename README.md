@@ -16,8 +16,8 @@ Instructions...
 <p>Matteo Kitic (mkitic@ggc.edu)</p>
 
 ### Roles
-<p>Christopher Wilder -> Testing & Documentation Lead  </p>
-<p>David Marshall ->Lead Programmer & Client Liaison 🦀</p>
-<p>Ephrem Engida -> Team Manager & UI/UX Design</p>
-<p>Matteo Kitic -> Data Modeler </p>
+1. <p>Christopher Wilder -> Testing & Documentation Lead </p>
+2. <p>David Marshall ->Lead Programmer & Client Liaison 🦀</p>
+1. <p>Ephrem Engida -> Team Manager & UI/UX Design</p>
+1. <p>Matteo Kitic -> Data Modeler </p>
 
