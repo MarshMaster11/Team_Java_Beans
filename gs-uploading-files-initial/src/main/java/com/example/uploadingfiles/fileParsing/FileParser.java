@@ -2,6 +2,7 @@ package com.example.uploadingfiles.fileParsing;
 
 import java.io.FileReader;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
@@ -119,6 +120,23 @@ public class FileParser {
 			pList.add(param);
 			
 		}
+
+		// temporary code to test the ExpectedResult class and ensure we can get the expected results
+		ArrayList<ExpectedResult> expectedResultsList = new ArrayList<>();
+		DataObject expResults = data.find("ExpectedResults");
+		for (Map.Entry<String, DataObject> subentry : expResults.getChildObject().entrySet()) {
+			String name = subentry.getKey();
+			String condition = subentry.getValue().find("Condition");
+			ExpectedResult expResult = new ExpectedResult(name, condition);
+			expectedResultsList.add(expResult);
+		}
+
+		// temporary code, print out all the expected results and their conditions
+		for (ExpectedResult er : expectedResultsList) {
+			System.out.println(er.getName());
+			System.out.println(er.getCondition());
+		}
+
 		
 		return pList;
 	}
