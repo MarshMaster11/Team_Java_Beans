@@ -14,9 +14,11 @@ import org.springframework.stereotype.Service;
 /**
  * Class: FileParser
  * @author Cameron Ventimiglia, Michelle Watson, Puen Xie, Constance Yang
- * Version: 1.0
+ * @author Christopher Wilder, David Marshall, Ephrem Engida, Matteo Kitic
+ * Version: 1.1
  * Course: ITEC 3870
  * Written: September 16th, 2021
+ * Modified: February 16th, 2022
  * 
  * Purpose: The purpose of this class is to have the ability to parse a JSON file
  * in order to create Parameter objects. These Parameter objects will hold the name of the
@@ -139,6 +141,32 @@ public class FileParser {
 
 		
 		return pList;
+	}
+
+	/**
+	 * method: parseParameters
+	 * takes a DataObject and returns an ArrayList of Parameters for generating test cases.
+	 * finds a parameter's name and its equivalence classes.
+	 * generate a Parameter object based on them.
+	 * adds the generated Parameter object to an ArrayList
+	 * @param data
+	 * @return an ArrayList of generated Parameter objects
+	 */
+	public ArrayList<Parameter> parseParameters(DataObject data) {
+		return null;
+	}
+
+	/**
+	 * method: parseParameters
+	 * takes a DataObject and returns an ArrayList of expected results for test cases.
+	 * finds an expected result's name and the condition under which it applies to a test case.
+	 * generate an ExpectedResult object based on them.
+	 * adds the generated ExpectedResult object to an ArrayList
+	 * @param data
+	 * @return an ArrayList of generated ExpectedResult objects
+	 */
+	public ArrayList<ExpectedResult> parseExpectedResults(DataObject data) {
+		return null;
 	}
 	
 	public void parseArray(JSONObject json, String key, DataObject data)
