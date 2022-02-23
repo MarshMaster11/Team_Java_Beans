@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
 
+import com.example.uploadingfiles.fileParsing.DataObject;
 import org.junit.jupiter.api.Test;
 
 import com.example.uploadingfiles.fileParsing.FileParser;
@@ -21,57 +22,60 @@ import com.example.uploadingfiles.storage.StorageException;
  */
 class testFileParse {
 
-//	@Test
-//	void testParseFile() {
-//
-//		FileParser fileParser = new FileParser();
-//
-//		try {
-//			ArrayList<Parameter> arrList = fileParser.parseFile("ExecutionQueueOnSave.json");
-//			assertTrue(arrList.size() > 0, "error parsing the file");
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//	}
-//
-//	@Test
-//	void testCreateCombos() {
-//		FileParser fileParser = new FileParser();
-//
-//		try {
-//			int count = 1;
-//			ArrayList<Parameter> arrList = fileParser.parseFile("ExecutionQueueOnSave.json");
-//
-//			for (Parameter temp : arrList) {
-//				count = count * temp.getEquivalenceClasses().size();
-//			}
-//
-//			String[][] combos = fileParser.createCombos(arrList, count);
-//			assertTrue(combos.length > 0, "error creating matrix");
-//
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//	}
-//
-//	@Test
-//	void testCountParameter() {
-//		FileParser fileParser = new FileParser();
-//
-//		try {
-//			int count = 1;
-//			ArrayList<Parameter> arrList = fileParser.parseFile("ExecutionQueueOnSave.json");
-//
-//			for (Parameter temp : arrList) {
-//				count = count * temp.getEquivalenceClasses().size();
-//			}
-//
-//			assertTrue(count == 16, "error updating parameter: count");
-//
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//	}
+	@Test
+	void testParseFile() {
+
+		FileParser fileParser = new FileParser();
+
+		try {
+			DataObject dataObject = fileParser.parseFile("ExecutionQueueOnSave.json");
+			ArrayList<Parameter> arrList = fileParser.parseParameters(dataObject);
+			assertTrue(arrList.size() > 0, "error parsing the file");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	@Test
+	void testCreateCombos() {
+		FileParser fileParser = new FileParser();
+
+		try {
+			int count = 1;
+			DataObject dataObject = fileParser.parseFile("ExecutionQueueOnSave.json");
+			ArrayList<Parameter> arrList = fileParser.parseParameters(dataObject);
+
+			for (Parameter temp : arrList) {
+				count = count * temp.getEquivalenceClasses().size();
+			}
+
+			String[][] combos = fileParser.createCombos(arrList, count);
+			assertTrue(combos.length > 0, "error creating matrix");
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	@Test
+	void testCountParameter() {
+		FileParser fileParser = new FileParser();
+
+		try {
+			int count = 1;
+			DataObject dataObject = fileParser.parseFile("ExecutionQueueOnSave.json");
+			ArrayList<Parameter> arrList = fileParser.parseParameters(dataObject);
+
+			for (Parameter temp : arrList) {
+				count = count * temp.getEquivalenceClasses().size();
+			}
+
+			assertTrue(count == 16, "error updating parameter: count");
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 	
 	@Test
 	void checkFileTypeLimitationError() {
