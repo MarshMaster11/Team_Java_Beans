@@ -17,4 +17,4 @@ Instructions...
 - **Ephrem Engida** (eengida@ggc.edu)
   - Team Manager & UI/UX Design
 - **Matteo Kitic** (mkitic@ggc.edu)
-  - Data Modeler
+  - Data Modeler 🐯
