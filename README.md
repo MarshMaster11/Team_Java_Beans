@@ -11,13 +11,10 @@ Requirements...
 Instructions...
 ### Authors
 <p>Christopher Wilder (cwilder@ggc.edu)</p>
+** Testing & Documentation Lead
 <p>David Marshall (dmarshall5@ggc.edu)</p>
+** Lead Programmer & Client Liaison 🦀
 <p>Ephrem Engida (eengida@ggc.edu)</p>
+** Team Manager & UI/UX Design
 <p>Matteo Kitic (mkitic@ggc.edu)</p>
-
-### Roles
-1. <p>Christopher Wilder -> Testing & Documentation Lead </p>
-2. <p>David Marshall ->Lead Programmer & Client Liaison 🦀</p>
-1. <p>Ephrem Engida -> Team Manager & UI/UX Design</p>
-1. <p>Matteo Kitic -> Data Modeler </p>
-
+**  Data Modeler 
