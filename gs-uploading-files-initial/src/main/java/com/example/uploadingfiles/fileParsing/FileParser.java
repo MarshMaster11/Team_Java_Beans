@@ -97,50 +97,12 @@ public class FileParser {
 	 * @return returns an ArrayList of Parameter objects
 	 * @throws Exception
 	 */
-	public ArrayList<Parameter> parseFile(String fileName) throws Exception {
+	public DataObject parseFile(String fileName) throws Exception {
 		DataObject data = new DataObject();
 		JSONObject obj = (JSONObject)new JSONParser().parse(new FileReader(fileName));
 		parseObject(data, obj);
 		
-		ArrayList<String> paramNameList = new ArrayList<>();
-		ArrayList<Parameter> pList = new ArrayList<>();
-		
-		DataObject inputParameters = data.find("InputParameters");
-		for (Map.Entry<String, DataObject> entry : inputParameters.getChildObject().entrySet())
-		{
-			String paramName = entry.getKey();
-			paramNameList.add(paramName);
-			
-			Parameter param = new Parameter();
-			param.setName(paramName);
-			
-			DataObject equivClass = entry.getValue().find("EquivalenceClasses");
-			
-			for (Map.Entry<String, DataObject> subentry : equivClass.getChildObject().entrySet())
-				param.addParam(subentry.getKey());
-			
-			pList.add(param);
-			
-		}
-
-		// temporary code to test the ExpectedResult class and ensure we can get the expected results
-		ArrayList<ExpectedResult> expectedResultsList = new ArrayList<>();
-		DataObject expResults = data.find("ExpectedResults");
-		for (Map.Entry<String, DataObject> subentry : expResults.getChildObject().entrySet()) {
-			String name = subentry.getKey();
-			String condition = subentry.getValue().find("Condition");
-			ExpectedResult expResult = new ExpectedResult(name, condition);
-			expectedResultsList.add(expResult);
-		}
-
-		// temporary code, print out all the expected results and their conditions
-		for (ExpectedResult er : expectedResultsList) {
-			System.out.println(er.getName());
-			System.out.println(er.getCondition());
-		}
-
-		
-		return pList;
+		return data;
 	}
 
 	/**
@@ -153,7 +115,27 @@ public class FileParser {
 	 * @return an ArrayList of generated Parameter objects
 	 */
 	public ArrayList<Parameter> parseParameters(DataObject data) {
-		return null;
+		ArrayList<String> paramNameList = new ArrayList<>();
+		ArrayList<Parameter> pList = new ArrayList<>();
+
+		DataObject inputParameters = data.find("InputParameters");
+		for (Map.Entry<String, DataObject> entry : inputParameters.getChildObject().entrySet())
+		{
+			String paramName = entry.getKey();
+			paramNameList.add(paramName);
+
+			Parameter param = new Parameter();
+			param.setName(paramName);
+
+			DataObject equivClass = entry.getValue().find("EquivalenceClasses");
+
+			for (Map.Entry<String, DataObject> subentry : equivClass.getChildObject().entrySet())
+				param.addParam(subentry.getKey());
+
+			pList.add(param);
+
+		}
+		return pList;
 	}
 
 	/**
@@ -166,7 +148,15 @@ public class FileParser {
 	 * @return an ArrayList of generated ExpectedResult objects
 	 */
 	public ArrayList<ExpectedResult> parseExpectedResults(DataObject data) {
-		return null;
+		ArrayList<ExpectedResult> expectedResultsList = new ArrayList<>();
+		DataObject expResults = data.find("ExpectedResults");
+		for (Map.Entry<String, DataObject> subentry : expResults.getChildObject().entrySet()) {
+			String name = subentry.getKey();
+			String condition = subentry.getValue().find("Condition");
+			ExpectedResult expResult = new ExpectedResult(name, condition);
+			expectedResultsList.add(expResult);
+		}
+		return expectedResultsList;
 	}
 	
 	public void parseArray(JSONObject json, String key, DataObject data)

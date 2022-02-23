@@ -9,6 +9,8 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.stream.Collectors;
 
+import com.example.uploadingfiles.fileParsing.DataObject;
+import com.example.uploadingfiles.fileParsing.ExpectedResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
@@ -87,8 +89,12 @@ public class FileUploadController {
 
 		// parse the file and create the count variable and update it as you populate
 		// the arrayList
-		ArrayList<Parameter> arrList = fileParser.parseFile("upload-dir/" + file.getOriginalFilename());
+		DataObject dataObject = fileParser.parseFile("upload-dir/" + file.getOriginalFilename());
+		ArrayList<Parameter> arrList = fileParser.parseParameters(dataObject);
 		int count = 1;
+
+		// create a list of expected results to compare with the combinations of parameters
+		ArrayList<ExpectedResult> expectedResults = fileParser.parseExpectedResults(dataObject);
 
 		// write to the file and update the count variable so it can be used later.
 		for (Parameter temp : arrList) {
