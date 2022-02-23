@@ -18,3 +18,12 @@ Instructions...
 ** Team Manager & UI/UX Design
 <p>Matteo Kitic (mkitic@ggc.edu)</p>
 **  Data Modeler 
+
+- Christopher Wilder (cwilder@ggc.edu)
+  - Testing & Documentation Lead
+- David Marshall (dmarshall5@ggc.edu)
+  - Lead Programmer & Client Liaison 🦀
+- Ephrem Engida (eengida@ggc.edu)
+  - Team Manager & UI/UX Design
+- Matteo Kitic (mkitic@ggc.edu)
+  - Data Modeler
