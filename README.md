@@ -10,11 +10,11 @@ Requirements...
 ### To Run
 Instructions...
 ### Authors
-- Christopher Wilder (cwilder@ggc.edu)
+- **Christopher Wilder** (cwilder@ggc.edu)
   - Testing & Documentation Lead
-- David Marshall (dmarshall5@ggc.edu)
+- **David Marshall** (dmarshall5@ggc.edu)
   - Lead Programmer & Client Liaison 🦀
-- Ephrem Engida (eengida@ggc.edu)
+- **Ephrem Engida** (eengida@ggc.edu)
   - Team Manager & UI/UX Design
-- Matteo Kitic (mkitic@ggc.edu)
+- **Matteo Kitic** (mkitic@ggc.edu)
   - Data Modeler
