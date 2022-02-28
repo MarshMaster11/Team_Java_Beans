@@ -13,7 +13,8 @@ Mr.Jim Wood
 ### Requires
 Requirements...
 ### To Run
-Instructions...
+right click on gs-uploading-files-initial -> run as -> Spring Boot App
+Once the service is started, type localhost:8080 into your browser to pull up the page.
 ### Authors
 - **Christopher Wilder** (cwilder@ggc.edu)
   - Testing & Documentation Lead
@@ -25,4 +26,10 @@ Instructions...
   - Data Modeler 🐯
  ### Technologies
   Java Spring
+ ### Communication Platforms
+ * MS Teams
+ * Discord
+ ### Project Managment
+ [Jira]([https://jira.ggc.edu/projects/TJB/issues/TJB-4?filter=allopenissues)
+ 
  ### License
