@@ -30,6 +30,6 @@ Once the service is started, type localhost:8080 into your browser to pull up th
  * MS Teams
  * Discord
  ### Project Managment
- [Jira]([https://jira.ggc.edu/projects/TJB/issues/TJB-4?filter=allopenissues)
+ [Jira link](https://jira.ggc.edu/projects/TJB/issues/TJB-4?filter=allopenissues)
  
  ### License
