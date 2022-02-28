@@ -1,4 +1,10 @@
 <h1 align-"center">Team Java Beans</h1>
+<h2>API:Category-Partition testing method</h2>
+
+The purpose of this project is to implement a functional API that takes the name of an input file as its parameter and return the name of an output file as its only result. The input file will specify the functionality of software under test using the category-partition method. The API will apply the category-partition method to the formatted contents of the input file, generating test cases based on the specification, and writing the results for them to an output file in the Cucumber "given-when-then" notation. The test cases will specify the selection of equivalence classes for the parameter and the expected test results when the test has been running.
+
+<h3>Client</h3>
+Mr.Jim Wood
 <p>
 Description...
 </p>
@@ -18,3 +24,6 @@ Instructions...
   - Team Manager & UI/UX Design 🔥
 - **Matteo Kitic** (mkitic@ggc.edu)
   - Data Modeler 🐯
+ ### Technologies
+  Java Spring
+ ### License
