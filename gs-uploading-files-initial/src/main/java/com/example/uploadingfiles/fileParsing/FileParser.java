@@ -11,6 +11,11 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.springframework.stereotype.Service;
 
+import javax.script.ScriptEngineManager;
+import javax.script.ScriptEngine;
+import javax.script.ScriptException;
+
+
 /**
  * Class: FileParser
  * @author Cameron Ventimiglia, Michelle Watson, Puen Xie, Constance Yang
@@ -193,6 +198,38 @@ public class FileParser {
 		if (stringArray.size() > 0)
 			data.addDataArray(key, stringArray);
 		
+	}
+
+		/**
+	 * method: resultsList
+	 * Returns a list of all possible results for a specific test case
+	 * @param Hashmap
+	 * @param count
+	 * @return returns list of expected results.
+	 * Author: Matteo
+	 */
+	//NOT FINISHED YET
+	public ArrayList<String> resultsList(String condition, HashMap<String, String> paramsMap, DataObject expectedResult) {
+		//split condition into array of words
+		String[] words = condition.split("//W+");
+
+		String result = "";
+		for (int i = 0; i < words.size(); i++) {
+			if (words[i] == "=" || words[i] == "!=") {
+				//know where to stop
+				result += words[i-1] + words[i] + words[i+1];
+			}
+			else if (words[i].equalsIgnoreCase("AND")) {
+				//keep appending to condition
+				result2 = result;
+				result2 += words[i];
+
+			}
+			else if (words[i].equalsIgnoreCase("OR")) {
+				//don't need to keep appending to the condition
+				//take existing result String before the "AND" condition and plug it in
+				result += words[i];			}
+		}
 	}
 	
 	public void parseObject(DataObject data, JSONObject json)
