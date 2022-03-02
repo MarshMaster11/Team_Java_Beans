@@ -203,47 +203,9 @@ public class FileParser {
 	 * @param Hashmap
 	 * @param count
 	 * @return returns list of expected results.
-	 * Author: Matteo,Ephrem
-	 */
-	//NOT FINISHED YET
-	public ArrayList<String> resultsList(String condition,  DataObject expectedResult) {
-		//split condition into array of words
-		String[] words = condition.split("//W+");
-		Stack<String> stack = new Stack<>();
-		ArrayList<String> list = new ArrayList<>();
+	 * Author: Matteo, Ephrem, David, Chris: Group coding sessions
 
-		String result = "";
-		for (int i = 0; i < words.size(); i++) {
-
-		 if(words[i].equalsIgnoreCase("or"))
-		 {
-			    list.add(result);
-                result = "";
-		 } /*
-			else if (words[i].equalsIgnoreCase("=")  || words[i].equalsIgnoreCase("!=")
-					|| words[i].equalsIgnoreCase("and")|| {
-				//know where to stop
-
-				 result += stack.pop();
-
-				//result += words[i-1] + words[i] + words[i+1];
-			}
-                //
-                */
-
-			else  {   // for parameters names
-				//keep appending to condition
-				result +=words[i];
-				//stack.push(words[i]);
-			     //left brackets should be pushed into the stack
-
-
-			}
-
-	}
-		/*
-
-		 shunting yard algorithm guide
+	 *SHUNTING YARD ALGORITHM GUIDE
 
 		While there are tokens to be read:
 2.        Read a token
@@ -259,6 +221,51 @@ public class FileParser {
 12.             Pop the left bracket from the stack and discard it
 13. While there are operators on the stack, pop them to the queue
 		 */
+
+	public Queue<String> resultsList(String condition,  DataObject expectedResult) {
+		//split condition into array of words
+		String[] words = condition.split("//W+");
+		Stack<String> stack = new Stack<>();
+		ArrayList<String> list = new ArrayList<>();
+		Queue<String> queue = new Queue<>();
+
+		//Greater value in map = higher precedence
+		HashMap<String, Integer> precedence = new HashMap<>();
+		precedence.put("AND", 3);
+		precedence.put("OR", 2);
+		precedence.put("(", 4);
+		precedence.put(")", 4);
+
+		for (String word : words) {
+			//push word at start of paranthesis
+			if (word.charAt(0) == '(') {
+				queue.add(word.substring(word.indexOf('(') + 1));
+				stack.push("(");
+			}
+			//push word at end of paranthesis
+			else if (word.endsWith(')')) {
+	
+				//while there is no left bracket at the top of the stack pop values from the stack onto the output queue.
+				do {
+					queue.add(stack.pop());
+
+				} while (!stack.peek().equals("("));
+				stack.pop(); //discard left bracket from stack
+
+			}
+			//account for AND operator
+			else if (word.equalsIgnoreCase("AND") || word.equalsIgnoreCase("OR") || word.equals("=") || word.equals("!=")) {
+				stack.push(word);
+			}
+			else {
+				//add normal words to queue
+				queue.add(word);
+			}
+		}
+		while (!stack.isEmpty()) {
+			queue.add(stack.pop());
+		}
+	}
 
 
 
