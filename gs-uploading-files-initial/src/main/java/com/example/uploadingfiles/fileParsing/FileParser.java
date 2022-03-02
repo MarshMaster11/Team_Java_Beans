@@ -1,10 +1,7 @@
 package com.example.uploadingfiles.fileParsing;
 
 import java.io.FileReader;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
+import java.util.*;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -206,32 +203,65 @@ public class FileParser {
 	 * @param Hashmap
 	 * @param count
 	 * @return returns list of expected results.
-	 * Author: Matteo
+	 * Author: Matteo,Ephrem
 	 */
 	//NOT FINISHED YET
-	public ArrayList<String> resultsList(String condition, HashMap<String, String> paramsMap, DataObject expectedResult) {
+	public ArrayList<String> resultsList(String condition,  DataObject expectedResult) {
 		//split condition into array of words
 		String[] words = condition.split("//W+");
+		Stack<String> stack = new Stack<>();
+		ArrayList<String> list = new ArrayList<>();
 
 		String result = "";
 		for (int i = 0; i < words.size(); i++) {
-			if (words[i] == "=" || words[i] == "!=") {
+
+		 if(words[i].equalsIgnoreCase("or"))
+		 {
+			    list.add(result);
+                result = "";
+		 } /*
+			else if (words[i].equalsIgnoreCase("=")  || words[i].equalsIgnoreCase("!=")
+					|| words[i].equalsIgnoreCase("and")|| {
 				//know where to stop
-				result += words[i-1] + words[i] + words[i+1];
+
+				 result += stack.pop();
+
+				//result += words[i-1] + words[i] + words[i+1];
 			}
-			else if (words[i].equalsIgnoreCase("AND")) {
+                //
+                */
+
+			else  {   // for parameters names
 				//keep appending to condition
-				result2 = result;
-				result2 += words[i];
+				result +=words[i];
+				//stack.push(words[i]);
+			     //left brackets should be pushed into the stack
+
 
 			}
-			else if (words[i].equalsIgnoreCase("OR")) {
-				//don't need to keep appending to the condition
-				//take existing result String before the "AND" condition and plug it in
-				result += words[i];			}
-		}
+
 	}
-	
+		/*
+
+		 shunting yard algorithm guide
+
+		While there are tokens to be read:
+2.        Read a token
+3.        If it's a number add it to queue
+4.        If it's an operator
+5.               While there's an operator on the top of the stack with greater precedence:
+6.                       Pop operators from the stack onto the output queue
+7.               Push the current operator onto the stack
+8.        If it's a left bracket push it onto the stack
+9.        If it's a right bracket
+10.            While there's not a left bracket at the top of the stack:
+11.                     Pop operators from the stack onto the output queue.
+12.             Pop the left bracket from the stack and discard it
+13. While there are operators on the stack, pop them to the queue
+		 */
+
+
+
 	public void parseObject(DataObject data, JSONObject json)
 	{
 		// loop through the whole json
