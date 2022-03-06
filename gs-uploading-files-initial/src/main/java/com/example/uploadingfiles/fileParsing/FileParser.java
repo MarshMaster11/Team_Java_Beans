@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import javax.script.ScriptEngineManager;
 import javax.script.ScriptEngine;
 import javax.script.ScriptException;
+import javax.xml.crypto.Data;
 
 
 /**
@@ -200,8 +201,6 @@ public class FileParser {
 		/**
 	 * method: resultsList
 	 * Returns a list of all possible results for a specific test case
-	 * @param Hashmap
-	 * @param count
 	 * @return returns list of expected results.
 	 * Author: Matteo, Ephrem, David, Chris: Group coding sessions
 
@@ -222,12 +221,11 @@ public class FileParser {
 13. While there are operators on the stack, pop them to the queue
 		 */
 
-	public Queue<String> resultsList(String condition,  DataObject expectedResult) {
+	public Queue<String> resultsList(String condition) {
 		//split condition into array of words
-		String[] words = condition.split("//W+");
+		String[] words = condition.split("\\s+");
 		Stack<String> stack = new Stack<>();
-		ArrayList<String> list = new ArrayList<>();
-		Queue<String> queue = new Queue<>();
+		Queue<String> queue = new LinkedList<>();
 
 		//Greater value in map = higher precedence
 		HashMap<String, Integer> precedence = new HashMap<>();
@@ -237,13 +235,14 @@ public class FileParser {
 		precedence.put(")", 4);
 
 		for (String word : words) {
-			//push word at start of paranthesis
+			//System.out.println("Word: " + word + "<- Word");
+			//push word at start of parenthesis
 			if (word.charAt(0) == '(') {
 				queue.add(word.substring(word.indexOf('(') + 1));
 				stack.push("(");
 			}
-			//push word at end of paranthesis
-			else if (word.endsWith(')')) {
+			//push word at end of parenthesis
+			else if (word.endsWith(")")) {
 	
 				//while there is no left bracket at the top of the stack pop values from the stack onto the output queue.
 				do {
@@ -253,8 +252,9 @@ public class FileParser {
 				stack.pop(); //discard left bracket from stack
 
 			}
-			//account for AND operator
+			//account for AND/OR/=/!= operators
 			else if (word.equalsIgnoreCase("AND") || word.equalsIgnoreCase("OR") || word.equals("=") || word.equals("!=")) {
+
 				stack.push(word);
 			}
 			else {
@@ -265,9 +265,8 @@ public class FileParser {
 		while (!stack.isEmpty()) {
 			queue.add(stack.pop());
 		}
+		return queue;
 	}
-
-
 
 	public void parseObject(DataObject data, JSONObject json)
 	{
@@ -298,5 +297,22 @@ public class FileParser {
 			
 		}
 		
+	}
+/**
+ * method: compareVariables
+ * IMPORTANT: This method is dated and needs to be modified to meet the project's needs
+ * Returns a list of parameter names that appear in any ExpectedResult Conditions for a given Json file.
+ * @return returns list of valid parameter names that appear in expectedResultsList
+ */
+	public ArrayList<String> compareVariable(ArrayList<Parameter> parametersList , ArrayList<ExpectedResult> expectedResultList) {
+		ArrayList<String> matchingVariables = new ArrayList<>();
+		for (Parameter parameter: parametersList) {
+			for (ExpectedResult expectedResult: expectedResultList) {
+				if (expectedResult.getCondition().contains(parameter.getName()) && !matchingVariables.contains(parameter.getName())) {
+					matchingVariables.add(parameter.getName());
+				}
+
+			}
+		} return matchingVariables;
 	}
 }
