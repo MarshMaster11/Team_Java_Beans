@@ -222,6 +222,11 @@ public class FileParser {
 		 */
 
 	public Queue<String> resultsList(String condition) {
+		//put space before and after operators in the condition
+		condition = condition.replaceAll("[()]|!=|=(?<!!)", " $0 ");
+		//make sure any space at the beginning and end is gone
+		condition = condition.trim();
+
 		//split condition into array of words
 		String[] words = condition.split("\\s+");
 		Stack<String> stack = new Stack<>();
@@ -233,22 +238,20 @@ public class FileParser {
 		precedence.put("OR", 2);
 		precedence.put("(", 4);
 		precedence.put(")", 4);
+		precedence.put("=", 5);
+		precedence.put("!=", 5);
 
 		for (String word : words) {
 			//System.out.println("Word: " + word + "<- Word");
-			//push word at start of parenthesis
-			if (word.charAt(0) == '(') {
-				queue.add(word.substring(word.indexOf('(') + 1));
+			if (word.equals("(")) {
 				stack.push("(");
 			}
-			//push word at end of parenthesis
-			else if (word.endsWith(")")) {
+			else if (word.equals(")")) {
 	
 				//while there is no left bracket at the top of the stack pop values from the stack onto the output queue.
-				do {
+				while (!stack.peek().equals("(")) {
 					queue.add(stack.pop());
-
-				} while (!stack.peek().equals("("));
+				}
 				stack.pop(); //discard left bracket from stack
 
 			}
