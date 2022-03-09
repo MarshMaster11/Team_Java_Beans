@@ -92,11 +92,11 @@ class testFileParse {
 	}
 
 	/**
-	 * method: testResultsList()
-	 * Preliminary test case that prints the returned lists of the resultsList method when applied to a given Json file.
+	 * method: testPrepareCondition()
+	 * Preliminary test case that prints the returned lists of the prepareCondition method when applied to a given Json file.
 	 */
 	@Test
-	void testResultsList() {
+	void testPrepareCondition() {
 		FileParser fileParser = new FileParser();
 		try {
 			DataObject dataObject = fileParser.parseFile("ExecutionQueueOnSave.json");
@@ -105,8 +105,8 @@ class testFileParse {
 
 			ArrayList<ExpectedResult> arrList = fileParser.parseExpectedResults(dataObject);
 			for (ExpectedResult expectedResult: arrList) {
-				fileParser.resultsList(expectedResult.getCondition());
-				System.out.println(fileParser.resultsList(expectedResult.getCondition()));
+				fileParser.prepareCondition(expectedResult.getCondition());
+				System.out.println(fileParser.prepareCondition(expectedResult.getCondition()));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
