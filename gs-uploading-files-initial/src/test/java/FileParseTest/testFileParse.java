@@ -127,6 +127,17 @@ class testFileParse {
 	}
 
 	@Test
+	void testIsConditionValidInvalid() {
+		FileParser fileParser = new FileParser();
+
+		Queue<String> condition = fileParser.prepareCondition("InterfaceX-EditState = Saved AND (InterfaceX-RunState = NeverRun OR InterfaceX-RunState = Completed)");
+		String[] testCase = {"Saved", "WebExecution", "Ready"};
+		Map<String, Integer> parameters = Map.of("InterfaceX-EditState", 0, "ExecutionType", 1, "InterfaceX-RunState", 2);
+		boolean result = fileParser.isConditionValid(condition, testCase, parameters);
+		assertFalse(result);
+	}
+
+	@Test
 	void testCompareVariables() {
 		FileParser fileParser = new FileParser();
 		try {
