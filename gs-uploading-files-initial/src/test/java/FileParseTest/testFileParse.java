@@ -3,6 +3,8 @@ package FileParseTest;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
+import java.util.Map;
+import java.util.Queue;
 
 import com.example.uploadingfiles.fileParsing.DataObject;
 import com.example.uploadingfiles.fileParsing.ExpectedResult;
@@ -111,6 +113,17 @@ class testFileParse {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+
+	@Test
+	void testIsConditionValid() {
+		FileParser fileParser = new FileParser();
+
+		Queue<String> condition = fileParser.prepareCondition("InterfaceX-EditState = Saved AND (InterfaceX-RunState = NeverRun OR InterfaceX-RunState = Completed)");
+		String[] testCase = {"Saved", "WebExecution", "Completed"};
+		Map<String, Integer> parameters = Map.of("InterfaceX-EditState", 0, "ExecutionType", 1, "InterfaceX-RunState", 2);
+		boolean result = fileParser.isConditionValid(condition, testCase, parameters);
+		assertTrue(result);
 	}
 
 	@Test

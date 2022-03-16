@@ -274,6 +274,19 @@ public class FileParser {
 		return queue;
 	}
 
+	/**
+	 * method: isConditionValid
+	 * checks to see if a condition for an expected result matches a test case.
+	 * returns true if it does and false if it does not.
+	 * @param condition the condition for the expected result
+	 * @param testCase the test case which may have the expected result
+	 * @param parameters a map of parameter names and their respective index in the test case array
+	 * @return a boolean specifying if the expected result applies to the test case
+	 */
+	public boolean isConditionValid(Queue<String> condition, String[] testCase, Map<String, Integer> parameters) {
+		return false;
+	}
+
 	public void parseObject(DataObject data, JSONObject json)
 	{
 		// loop through the whole json
