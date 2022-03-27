@@ -284,7 +284,70 @@ public class FileParser {
 	 * @return a boolean specifying if the expected result applies to the test case
 	 */
 	public boolean isConditionValid(Queue<String> condition, String[] testCase, Map<String, Integer> parameters) {
-		return false;
+		// create a stack to keep track of what needs to happen next while parsing the condition
+		// needs to hold booleans and strings, so initialize as a generic stack
+		Stack stack = new Stack();
+		// go through the entire condition
+		while (!condition.isEmpty()) {
+			String s = condition.poll();
+			if(s.equals("!=") || s.equals("=")) {
+				boolean result = isConditionEqual(stack, testCase, parameters);
+				if(s.equals("!=")) {
+					result = !result;
+				}
+				stack.push(result);
+			}
+			// "and" and "or" should be uppercase here, but use equalsIgnoreCase to be safe
+			else if(s.equalsIgnoreCase("AND")) {
+				// boolean comparators short-circuit if they know their result from the first item,
+				// so make sure to pop before comparing
+				boolean b1 = (boolean) stack.pop();
+				boolean b2 = (boolean) stack.pop();
+
+				stack.push( b1 && b2);
+			}
+			else if(s.equalsIgnoreCase("OR")) {
+				// boolean comparators short-circuit if they know their result from the first item,
+				// so make sure to pop before comparing
+				boolean b1 = (boolean) stack.pop();
+				boolean b2 = (boolean) stack.pop();
+				stack.push(b1 || b2);
+			}
+			else {
+				stack.push(s);
+			}
+		}
+		return (boolean) stack.pop();
+	}
+
+	/**
+	 * method: isConditionEqual
+	 * checks to see if the top two items in the stack are equal. In this case, equal means
+	 * the value of the parameter in the test case matches the value given in the condition.
+	 * @param stack the stack of pieces of the condition to test
+	 * @param testCase the test case for which the condition is being checked
+	 * @param parameters a map of which parameters correspond to which parts of the test case
+	 * @return a boolean representing if the value for the parameter matches what was given
+	 */
+	private boolean isConditionEqual(Stack stack, String[] testCase, Map<String, Integer> parameters) {
+		if(stack.peek() instanceof Boolean) {
+			// something went wrong; deal with this later
+			// for now, print a message and return false
+			System.err.println("Something went wrong parsing the condition for expected results.");
+			return false;
+		}
+
+		String paramVal = (String) stack.pop();
+
+		if(stack.peek() instanceof Boolean) {
+			// something went wrong; deal with this later
+			// for now, print a message and return false
+			System.err.println("Something went wrong parsing the condition for expected results.");
+			return false;
+		}
+
+		String paramName = (String) stack.pop();
+		return testCase[parameters.get(paramName)].equals(paramVal);
 	}
 
 	public void parseObject(DataObject data, JSONObject json)
