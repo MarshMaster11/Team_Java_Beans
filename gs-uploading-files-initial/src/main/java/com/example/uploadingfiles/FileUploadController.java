@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.Map;
+import java.util.Queue;
 import java.util.stream.Collectors;
 
 import com.example.uploadingfiles.fileParsing.DataObject;
@@ -124,6 +126,20 @@ public class FileUploadController {
 			for (int column = 0; column < combos[row].length; column++) {
 				writer.write(combos[row][column] + " ");
 			}
+
+//			String results = "-> ";
+//			for (ExpectedResult er : expectedResults) {
+//				Queue<String> condition = fileParser.prepareCondition(er.getCondition());
+//				Map<String, Integer> parameterMap = fileParser.getParamMap(arrList); // method not yet implemented
+//				if(fileParser.isConditionValid(condition, combos[row], parameterMap)) {
+//					results += er.getName() + " ";
+//				}
+//			}
+//			if(results.equals("-> ")) {
+//				results += "Invalid";
+//			}
+//			writer.write(results);
+
 			writer.write("\n");
 		}
 
