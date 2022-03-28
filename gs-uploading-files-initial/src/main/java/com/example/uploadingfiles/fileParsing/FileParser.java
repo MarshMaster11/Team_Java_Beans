@@ -279,23 +279,23 @@ public class FileParser {
 	 * checks to see if a condition for an expected result matches a test case.
 	 * returns true if it does and false if it does not.
 	 * @param condition the condition for the expected result
-	 * @param testCase the test case which may have the expected result
-	 * @param parameters a map of parameter names and their respective index in the test case array
+	 * @param testCaseValues the test case which may have the expected result
+	 * @param parameterIndexes a map of parameter names and their respective index in the test case array
 	 * @return a boolean specifying if the expected result applies to the test case
 	 */
-	public boolean isConditionValid(Queue<String> condition, String[] testCase, Map<String, Integer> parameters) {
+	public boolean isConditionValid(Queue<String> condition, String[] testCaseValues, Map<String, Integer> parameterIndexes) {
 		// create a stack to keep track of what needs to happen next while parsing the condition
 		// needs to hold booleans and strings, so initialize as a generic stack
+
 		Stack stack = new Stack();
 		// go through the entire condition
 		while (!condition.isEmpty()) {
 			String s = condition.poll();
-			if(s.equals("!=") || s.equals("=")) {
-				boolean result = isConditionEqual(stack, testCase, parameters);
-				if(s.equals("!=")) {
-					result = !result;
-				}
-				stack.push(result);
+			if(s.equals("=")) {
+				stack.push(isConditionEqual(stack, testCaseValues, parameterIndexes));
+			}
+			else if(s.equals("!=")) {
+				stack.push(!isConditionEqual(stack, testCaseValues, parameterIndexes));
 			}
 			// "and" and "or" should be uppercase here, but use equalsIgnoreCase to be safe
 			else if(s.equalsIgnoreCase("AND")) {
@@ -311,6 +311,7 @@ public class FileParser {
 				// so make sure to pop before comparing
 				boolean b1 = (boolean) stack.pop();
 				boolean b2 = (boolean) stack.pop();
+
 				stack.push(b1 || b2);
 			}
 			else {
@@ -347,6 +348,7 @@ public class FileParser {
 		}
 
 		String paramName = (String) stack.pop();
+
 		return testCase[parameters.get(paramName)].equals(paramVal);
 	}
 
