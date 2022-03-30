@@ -8,11 +8,6 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.springframework.stereotype.Service;
 
-import javax.script.ScriptEngineManager;
-import javax.script.ScriptEngine;
-import javax.script.ScriptException;
-import javax.xml.crypto.Data;
-
 
 /**
  * Class: FileParser
@@ -140,6 +135,7 @@ public class FileParser {
 		}
 		return pList;
 	}
+	// test
 
 	/**
 	 * method: parseParameters

@@ -10,9 +10,10 @@ import com.example.uploadingfiles.fileParsing.DataObject;
 import com.example.uploadingfiles.fileParsing.ExpectedResult;
 import org.junit.jupiter.api.Test;
 
-import com.example.uploadingfiles.fileParsing.FileParser;
+//import com.example.uploadingfiles.fileParsing.FileParser;
 import com.example.uploadingfiles.fileParsing.Parameter;
 import com.example.uploadingfiles.storage.StorageException;
+import com.example.uploadingfiles.fileParsing.FileParser;
 
 /**
  * Class: testFileParse
@@ -136,6 +137,60 @@ class testFileParse {
 		boolean result = fileParser.isConditionValid(condition, testCase, parameters);
 		assertFalse(result);
 	}
+    //more tests
+
+	@Test
+	void testIsConditionValid2() {
+		FileParser fileParser = new FileParser();
+
+		Queue<String> condition = fileParser.prepareCondition("InterfaceX-EditState = Saved AND (InterfaceX-RunState = NeverRun OR InterfaceX-RunState = Completed)");
+		String[] testCase = {"Saved", "WebExecution", "NeverRun"};
+		Map<String, Integer> parameters = Map.of("InterfaceX-EditState", 0, "ExecutionType", 1, "InterfaceX-RunState", 2);
+		boolean result = fileParser.isConditionValid(condition, testCase, parameters);
+		assertTrue(result);
+	}
+
+	@Test
+	void testIsConditionValidInvalid2() {
+		FileParser fileParser = new FileParser();
+
+		Queue<String> condition = fileParser.prepareCondition("InterfaceX-EditState = Saved AND (InterfaceX-RunState = NeverRun OR InterfaceX-RunState = Completed)");
+		String[] testCase = {"NotYetSaved", "WebExecution", "Ready"};
+		Map<String, Integer> parameters = Map.of("InterfaceX-EditState", 0, "ExecutionType", 1, "InterfaceX-RunState", 2);
+		boolean result = fileParser.isConditionValid(condition, testCase, parameters);
+		assertFalse(result);
+	}
+
+	@Test
+	void testIsConditionValid3() {
+		FileParser fileParser = new FileParser();
+
+		Queue<String> condition = fileParser.prepareCondition("InterfaceX-EditState = NotSaved AND (InterfaceX-RunState = NeverRun OR InterfaceX-RunState = Completed)");
+		String[] testCase = {"NotSaved", "WebExecution", "NeverRun"};
+		Map<String, Integer> parameters = Map.of("InterfaceX-EditState", 0, "ExecutionType", 1, "InterfaceX-RunState", 2);
+		boolean result = fileParser.isConditionValid(condition, testCase, parameters);
+		assertTrue(result);
+	}
+
+	@Test
+	void testIsConditionValidInvalid3() {
+		FileParser fileParser = new FileParser();
+
+		Queue<String> condition = fileParser.prepareCondition("InterfaceX-EditState = Saved AND (InterfaceX-RunState = NeverRun OR InterfaceX-RunState != Completed)");
+		String[] testCase = {"NotYetSaved", "WebExecution", "NotCompletedYet"};
+		Map<String, Integer> parameters = Map.of("InterfaceX-EditState", 0, "ExecutionType", 1, "InterfaceX-RunState", 2);
+		boolean result = fileParser.isConditionValid(condition, testCase, parameters);
+		assertFalse(result);
+	}
+
+
+	//unit test for prepareCondition
+
+
+
+
+
+
 
 	@Test
 	void testCompareVariables() {
