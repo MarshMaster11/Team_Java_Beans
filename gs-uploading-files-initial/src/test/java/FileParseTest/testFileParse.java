@@ -115,6 +115,38 @@ class testFileParse {
 			e.printStackTrace();
 		}
 	}
+	/*
+	 a test for prepare condition method
+	    checks if it functions as expected
+	
+	*/
+	
+	@Test
+	void testPrepareCondition1(){
+		FileParser fileParser = new FileParser();
+		Queue<String> condition = fileParser.prepareCondition("A = 0");
+		     //A=
+
+		assertEquals(3,condition.size());
+		assertEquals("A",condition.poll());
+		assertEquals("0",condition.poll());
+		assertEquals("=",condition.poll());
+
+	}
+	@Test
+	void testPrepareCondition2(){
+		FileParser fileParser = new FileParser();
+		Queue<String> condition = fileParser.prepareCondition("InterfaceX-EditState = Saved AND (InterfaceX-RunState = Ready OR InterfaceX-RunState = Running)");
+		//A=
+
+		assertNotEquals(1,condition.size());
+		assertNotEquals("A",condition.poll());
+		assertNotEquals("0",condition.poll());
+		assertNotEquals("!=",condition.poll());
+		assertEquals("InterfaceX-RunState",condition.poll());
+
+	}
+
 
 	@Test
 	void testIsConditionValid() {
