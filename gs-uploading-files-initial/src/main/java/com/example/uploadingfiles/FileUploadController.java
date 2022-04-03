@@ -62,7 +62,7 @@ public class FileUploadController {
 	}
 
 	// This code remained unchanged. This is to get a specific file resource stored
-	// in our upload-dir folder.
+	// in the upload-dir folder.
 	@GetMapping("/files/{filename:.+}")
 	@ResponseBody
 	public ResponseEntity<Resource> serveFile(@PathVariable String filename) {
@@ -75,8 +75,7 @@ public class FileUploadController {
 	public void processFile(MultipartFile file, String fileNameNoExt) throws Exception {
 		// store the json file in order to use it later
 		storageService.store(file);
-
-		// create the File object inside of the upload-dir location. Create the
+		// create the File object inside the upload-dir location. Create the
 		// BufferedWriter to write to the File
 		File outputFile = new File("upload-dir/" + fileNameNoExt + "-combos.txt");
 		BufferedWriter writer = new BufferedWriter(new FileWriter(outputFile));
@@ -90,7 +89,7 @@ public class FileUploadController {
 		// create a list of expected results to compare with the combinations of parameters
 		ArrayList<ExpectedResult> expectedResults = fileParser.parseExpectedResults(dataObject);
 
-		// write to the file and update the count variable so it can be used later.
+		// write to the file and update the count variable, so it can be used later.
 		for (Parameter temp : arrList) {
 			writer.write(
 					"Parameter Name: " + temp.getName() + " | Equivalence Classes: " + temp.getEquivalenceClasses());
@@ -186,9 +185,9 @@ public class FileUploadController {
 		}
 
 		// return a message to indicate the file was successfully submitted and that
-		// they recieved their text file.
+		// they received their text file.
 		redirectAttributes.addFlashAttribute("message", "You successfully uploaded " + file.getOriginalFilename() + "\n"
-				+ "and recieved " + fileNameNoExt + "-combos.txt!");
+				+ "and received " + fileNameNoExt + "-combos.txt!");
 
 		return "redirect:/";
 	}
