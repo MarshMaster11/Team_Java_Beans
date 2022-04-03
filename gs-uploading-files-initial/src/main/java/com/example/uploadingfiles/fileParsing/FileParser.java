@@ -294,11 +294,15 @@ public class FileParser {
 		}
 		if(condition.contains("!==") || condition.contains("==")){
 			result.setIsvalid(false);
-			result.setErrorMessage("the condition has invalid operator");
+			result.setErrorMessage("the condition has invalid operator(s)");
 
 		}
+		else {
+			result.setIsvalid(true);
+		}
 
-		return result;
+
+		return  result;
 
 	}
 
