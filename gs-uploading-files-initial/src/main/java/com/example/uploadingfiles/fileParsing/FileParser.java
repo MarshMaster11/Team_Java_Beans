@@ -45,7 +45,7 @@ public class FileParser {
 	 * @return returns the populated matrix
 	 */
 	public String[][] createCombos(ArrayList<Parameter> arrList, int count) {
-		ArrayList<ArrayList<String>> paramList = new ArrayList<>(); // stores the strings of each parameters equiv classes
+		ArrayList<ArrayList<String>> paramList = new ArrayList<>(); // stores the strings of each parameter's equiv classes
 
 		//populate the paramList ArrayList with the equivalence Classes
 		for (Parameter temp : arrList) {
@@ -357,7 +357,7 @@ public class FileParser {
 			String key = iter.next();
 
 			if (json.get(key) instanceof JSONObject) {
-				// if its an object (surrounded by '{}')
+				// if it is an object (surrounded by '{}')
 				// create a new DataObject and do parseObject again
 				DataObject child = new DataObject();
 				data.addChild(key, child);
@@ -366,7 +366,7 @@ public class FileParser {
 			}
 
 			if (json.get(key) instanceof JSONArray) {
-				// if its an array (surrounded by '[]')
+				// if it is an array (surrounded by '[]')
 				// let parseArray handle it
 				parseArray(json, key, data);
 				continue;
@@ -384,7 +384,7 @@ public class FileParser {
 	 * Returns a list of parameter names that appear in any ExpectedResult Conditions for a given Json file.
 	 * @return returns list of valid parameter names that appear in expectedResultsList
 	 */
-	public ArrayList<String> compareVariable(ArrayList<Parameter> parametersList , ArrayList<ExpectedResult> expectedResultList) {
+	/*public ArrayList<String> compareVariable(ArrayList<Parameter> parametersList , ArrayList<ExpectedResult> expectedResultList) {
 		ArrayList<String> matchingVariables = new ArrayList<>();
 		for (Parameter parameter: parametersList) {
 			for (ExpectedResult expectedResult: expectedResultList) {
@@ -394,5 +394,5 @@ public class FileParser {
 
 			}
 		} return matchingVariables;
-	}
+	} */
 }

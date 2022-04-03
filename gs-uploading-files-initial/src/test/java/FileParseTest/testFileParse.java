@@ -2,6 +2,7 @@ package FileParseTest;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.Queue;
@@ -96,7 +97,7 @@ class testFileParse {
 
 	/**
 	 * method: testPrepareCondition()
-	 * Preliminary test case that prints the returned lists of the prepareCondition method when applied to a given Json file.
+	 * Preliminary testing method that prints the returned lists of the prepareCondition method when applied to a given Json file.
 	 */
 	@Test
 	void testPrepareCondition() {
@@ -116,11 +117,9 @@ class testFileParse {
 		}
 	}
 	/*
-	 a test for prepare condition method
-	    checks if it functions as expected
-	
+	Tests for prepare condition method
+	    that checks if it functions as expected
 	*/
-	
 	@Test
 	void testPrepareCondition1(){
 		FileParser fileParser = new FileParser();
@@ -147,6 +146,16 @@ class testFileParse {
 
 	}
 
+	@Test
+	void testPrepareCondition3(){
+		FileParser fileParser = new FileParser();
+		Queue<String> condition = fileParser.prepareCondition("InterfaceX-EditState = Saved AND (InterfaceX-RunState = NeverRun OR InterfaceX-RunState = Completed)");
+		String[] stringArray = {"InterfaceX-EditState", "Saved", "=", "InterfaceX-RunState", "NeverRun", "=", "InterfaceX-RunState", "Completed", "=", "OR", "AND"};
+		for (int i = 0; i < stringArray.length; i++) {
+			assertEquals(stringArray[i],condition.poll());
+		}
+
+	}
 
 	@Test
 	void testIsConditionValid() {
@@ -215,29 +224,16 @@ class testFileParse {
 		assertFalse(result);
 	}
 
-
-	//unit test for prepareCondition
-
-
-
-
-
-
-
 	@Test
-	void testCompareVariables() {
+	void testIsConditionValid4() {
 		FileParser fileParser = new FileParser();
-		try {
-			DataObject dataObject = fileParser.parseFile("ExecutionQueueOnSave.json");
-			//DataObject dataObject = fileParser.parseFile("OrgLevelUnits.json");
-			//DataObject dataObject = fileParser.parseFile("QuadraticEquationSolver.json");
 
-			ArrayList<Parameter> parametersList = fileParser.parseParameters(dataObject);
-			ArrayList<ExpectedResult> expectedResultsList = fileParser.parseExpectedResults(dataObject);
-			ArrayList<String> variablesInExpectedResults = fileParser.compareVariable(parametersList,expectedResultsList);
-			System.out.println(variablesInExpectedResults);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		Queue<String> condition = fileParser.prepareCondition("InterfaceX-EditState = NotYetSaved AND (InterfaceX-RunState = NeverRun OR InterfaceX-RunState = Running)");
+		String[] testCase = {"NotYetSaved", "WebExecution", "Running"};
+		Map<String, Integer> parameters = Map.of("InterfaceX-EditState", 0, "ExecutionType", 1, "InterfaceX-RunState", 2);
+		boolean result = fileParser.isConditionValid(condition, testCase, parameters);
+		assertTrue(result);
 	}
+
+
 }
