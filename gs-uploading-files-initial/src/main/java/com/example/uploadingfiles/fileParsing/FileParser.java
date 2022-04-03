@@ -271,9 +271,15 @@ public class FileParser {
 		}
 		return queue;
 	}
-	//handiling exception in the Queue of conditions (not the orginal conditions in the JSON)
 
-	public ConditionResult areConditionValid(Queue<String> condition){
+		/**
+	 * method: isConditionValid
+	 * checks to see if condition in the queue is valid or not
+	 * returns test case for condition and whether condition is valid or not
+	 * @return condition result
+	 */
+
+	public ConditionResult isConditionValid(Queue<String> condition){
 		ConditionResult result = new ConditionResult();
 		result.setIsvalid(true);
 		if(condition.isEmpty()){
@@ -298,7 +304,7 @@ public class FileParser {
 
 
 	/**
-	 * method: isConditionValid
+	 * method: compareTestCaseWithCondtions
 	 * checks to see if a condition for an expected result matches a test case.
 	 * returns true if it does and false if it does not.
 	 * @param condition the condition for the expected result
@@ -309,7 +315,7 @@ public class FileParser {
 
 	//handlling exception
 
-	public boolean isConditionValid(Queue<String> condition, String[] testCaseValues, Map<String, Integer> parameterIndexes) {
+	public boolean compareTestCaseWithCondtions(Queue<String> condition, String[] testCaseValues, Map<String, Integer> parameterIndexes) {
 		// create a stack to keep track of what needs to happen next while parsing the condition
 		// needs to hold booleans and strings, so initialize as a generic stack
 

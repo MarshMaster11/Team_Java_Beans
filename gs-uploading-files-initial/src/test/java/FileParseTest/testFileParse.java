@@ -1,12 +1,9 @@
 package FileParseTest;
 
 import static org.junit.jupiter.api.Assertions.*;
-
-<<<<<<< HEAD
 import java.security.InvalidParameterException;
-=======
+import java.beans.Transient;
 import java.lang.reflect.Array;
->>>>>>> 8f9bbb1de4468e0f9f90fcdcd2bb3f8ca60ed6c9
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.Queue;
@@ -142,8 +139,6 @@ class testFileParse {
 	void testPrepareCondition2(){
 		FileParser fileParser = new FileParser();
 
-		Queue<String> condition = fileParser.prepareCondition("InterfaceX-EditState = Saved AND (InterfaceX-RunState = Ready OR InterfaceX-RunState = Running And)");
-
 		Queue<String> condition = fileParser.prepareCondition("InterfaceX-EditState = Saved AND (InterfaceX-RunState = Ready OR InterfaceX-RunState = Running)");
 
 		//A=
@@ -266,7 +261,6 @@ class testFileParse {
 	}
 
 
-
 	//unit test for prepareCondition
 
 
@@ -284,5 +278,18 @@ class testFileParse {
 		assertTrue(result);
 	}
 
+
+	@Test
+	void testConditionQueue() {
+		FileParser fileParser = new FileParser();
+		Queue<String> condition = fileParser.prepareCondition("InterfaceX-EditState = Saved AND (InterfaceX-RunState = Ready OR InterfaceX-RunState = Running))");
+		
+		/*assertNotEquals(1,condition.size());
+		assertNotEquals("A",condition.poll());
+		assertNotEquals("0",condition.poll());
+		assertNotEquals("!=",condition.poll());
+		assertEquals("InterfaceX-RunState",condition.poll());
+		*/
+	}
 
 }
