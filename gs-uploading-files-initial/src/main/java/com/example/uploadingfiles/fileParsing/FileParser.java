@@ -1,6 +1,7 @@
 package com.example.uploadingfiles.fileParsing;
 
 import java.io.FileReader;
+import java.security.InvalidParameterException;
 import java.util.*;
 
 import org.json.simple.JSONArray;
@@ -259,6 +260,7 @@ public class FileParser {
 				}
 				stack.push(word);
 			}
+			// check if there is no word after AND
 			else {
 				//add normal words to queue
 				queue.add(word);
@@ -269,6 +271,31 @@ public class FileParser {
 		}
 		return queue;
 	}
+	//handiling exception in the Queue of conditions (not the orginal conditions in the JSON)
+
+	public ConditionResult areConditionValid(Queue<String> condition){
+		ConditionResult result = new ConditionResult();
+		result.setIsvalid(true);
+		if(condition.isEmpty()){
+
+			result.setIsvalid(false);
+			result.setErrorMessage("the condition is empty");
+		}
+		//if there is an extra unmatched bracket
+		if(condition.contains(")") || condition.contains("(")){
+			result.setIsvalid(false);
+			result.setErrorMessage("the condition has extra ( or )");
+		}
+		if(condition.contains("!==") || condition.contains("==")){
+			result.setIsvalid(false);
+			result.setErrorMessage("the condition has invalid operator");
+
+		}
+
+		return result;
+
+	}
+
 
 	/**
 	 * method: isConditionValid
@@ -279,6 +306,9 @@ public class FileParser {
 	 * @param parameterIndexes a map of parameter names and their respective index in the test case array
 	 * @return a boolean specifying if the expected result applies to the test case
 	 */
+
+	//handlling exception
+
 	public boolean isConditionValid(Queue<String> condition, String[] testCaseValues, Map<String, Integer> parameterIndexes) {
 		// create a stack to keep track of what needs to happen next while parsing the condition
 		// needs to hold booleans and strings, so initialize as a generic stack
@@ -347,6 +377,7 @@ public class FileParser {
 
 		return testCase[parameters.get(paramName)].equals(paramVal);
 	}
+
 
 	public void parseObject(DataObject data, JSONObject json)
 	{

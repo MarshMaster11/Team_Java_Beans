@@ -2,6 +2,7 @@ package FileParseTest;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.security.InvalidParameterException;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.Queue;
@@ -115,6 +116,60 @@ class testFileParse {
 			e.printStackTrace();
 		}
 	}
+	@Test
+	void testPrepareCondition1(){
+		FileParser fileParser = new FileParser();
+		Queue<String> condition = fileParser.prepareCondition("A = 0");
+		     //A=
+
+		assertEquals(3,condition.size());
+		assertEquals("A",condition.poll());
+		assertEquals("0",condition.poll());
+		assertEquals("=",condition.poll());
+
+	}
+	@Test
+	void testPrepareCondition2(){
+		FileParser fileParser = new FileParser();
+		Queue<String> condition = fileParser.prepareCondition("InterfaceX-EditState = Saved AND (InterfaceX-RunState = Ready OR InterfaceX-RunState = Running And)");
+		//A=
+
+		assertNotEquals(1,condition.size());
+		assertNotEquals("A",condition.poll());
+		assertNotEquals("0",condition.poll());
+		assertNotEquals("!=",condition.poll());
+		assertEquals("InterfaceX-RunState",condition.poll());
+
+	}
+
+
+	@Test
+	void testConditionisValid5(){
+		FileParser fileParser = new FileParser();
+		Queue<String> condition = fileParser.prepareCondition("A = 0 and Discriminant = GreaterThanZero");
+		String[] testCase = {"Positive", "GreaterThanZero"};
+		Map<String, Integer> parameters = Map.of("A", 0, "Discriminant", 1);
+		boolean result = fileParser.isConditionValid(condition, testCase, parameters);
+		assertFalse(result);
+
+	}
+
+	/*
+	@Test
+	void testIsConditionValid4() {
+		FileParser fileParser = new FileParser();
+
+		Queue<String> condition = fileParser.prepareCondition("InterfaceX-EditState == Saved AND ((InterfaceX-RunState = NeverRun) OR (InterfaceX-RunState = Completed))");
+		if(condition.contains(")") || condition.contains("(")){
+			throw new InvalidParameterException("Check for extra bracket in the condition");
+		}
+		String[] testCase = {"Saved", "WebExecution", "Completed"};
+		Map<String, Integer> parameters = Map.of("InterfaceX-EditState", 0, "ExecutionType", 1, "InterfaceX-RunState", 2);
+		boolean result = fileParser.isConditionValid(condition, testCase, parameters);
+		assertTrue(result);
+	}
+	*/
+
 
 	@Test
 	void testIsConditionValid() {
@@ -185,10 +240,6 @@ class testFileParse {
 
 
 	//unit test for prepareCondition
-
-
-
-
 
 
 
