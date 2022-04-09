@@ -1,6 +1,7 @@
 package com.example.uploadingfiles.fileParsing;
 
 import java.io.FileReader;
+import java.lang.reflect.Array;
 import java.security.InvalidParameterException;
 import java.util.*;
 
@@ -283,7 +284,6 @@ public class FileParser {
 		ConditionResult result = new ConditionResult();
 		result.setIsvalid(true);
 		if(condition.isEmpty()){
-
 			result.setIsvalid(false);
 			result.setErrorMessage("the condition is empty");
 		}
@@ -301,8 +301,7 @@ public class FileParser {
 			result.setIsvalid(true);
 		}
 
-
-		return  result;
+		return result;
 
 	}
 
@@ -419,6 +418,25 @@ public class FileParser {
 		}
 
 	}
+
+		/**
+	 * method: getParamMap
+	 * Links Columns and their equivalence classes from createcombos to their corresponding parameter names
+	 * @param arr an arraylist of parameter names
+	 * @return a hashmap of columns with their corresponding parameter names
+	 */
+	public HashMap<Integer,String> getParamMap(ArrayList<Parameter> arr) {
+		HashMap<Integer, String> linkParamToColumn = new HashMap<>();
+		for (int i = 0; i < arr.size(); i++) {
+			String paramName = arr.get(i).getName();
+			//column index is the key while the value is the parameter name that corresponds to it
+			linkParamToColumn.put(i, paramName);
+		}
+		return linkParamToColumn;
+	}
+
+
+
 	/**
 	 * method: compareVariables
 	 * IMPORTANT: This method is dated and needs to be modified to meet the project's needs
