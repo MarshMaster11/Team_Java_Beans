@@ -273,7 +273,7 @@ public class FileParser {
 		return queue;
 	}
 
-		/**
+	/**
 	 * method: isConditionValid
 	 * checks to see if condition in the queue is valid or not
 	 * returns test case for condition and whether condition is valid or not
@@ -419,18 +419,18 @@ public class FileParser {
 
 	}
 
-		/**
+	/**
 	 * method: getParamMap
-	 * Links Columns and their equivalence classes from createcombos to their corresponding parameter names
+	 * Links Columns and their equivalence classes from createCombos to their corresponding parameter names
 	 * @param arr an arraylist of parameter names
 	 * @return a hashmap of columns with their corresponding parameter names
 	 */
-	public HashMap<Integer,String> getParamMap(ArrayList<Parameter> arr) {
-		HashMap<Integer, String> linkParamToColumn = new HashMap<>();
+	public HashMap<String, Integer> getParamMap(ArrayList<Parameter> arr) {
+		HashMap<String, Integer> linkParamToColumn = new HashMap<>();
 		for (int i = 0; i < arr.size(); i++) {
 			String paramName = arr.get(i).getName();
-			//column index is the key while the value is the parameter name that corresponds to it
-			linkParamToColumn.put(i, paramName);
+			//parameter name is the key while the value is the column index that corresponds to it
+			linkParamToColumn.put(paramName, i);
 		}
 		return linkParamToColumn;
 	}
