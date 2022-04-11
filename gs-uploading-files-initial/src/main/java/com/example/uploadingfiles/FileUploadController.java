@@ -5,6 +5,8 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Map;
+import java.util.Queue;
 import java.util.stream.Collectors;
 
 import com.example.uploadingfiles.fileParsing.DataObject;
@@ -103,6 +105,11 @@ public class FileUploadController {
 		// arrList and count as parameters
 		String[][] combos = fileParser.createCombos(arrList, count);
 
+		// create a map to keep track of which index corresponds to which parameter name.
+		// make the map after generating the test cases in case the order of the parameters
+		// changes somehow
+		Map<String, Integer> parameterNameIndexMap = fileParser.getParamMap(arrList);
+
 		// this is used to write the test case combinations to the text file.
 		int testCaseNumber = 1;
 		for (int row = 0; row < combos.length; row++) {
@@ -118,18 +125,19 @@ public class FileUploadController {
 				writer.write(combos[row][column] + " ");
 			}
 
-//			String results = "-> ";
-//			for (ExpectedResult er : expectedResults) {
-//				Queue<String> condition = fileParser.prepareCondition(er.getCondition());
-//				Map<String, Integer> parameterMap = fileParser.getParamMap(arrList); // method not yet implemented
-//				if(fileParser.isConditionValid(condition, combos[row], parameterMap)) {
-//					results += er.getName() + " ";
-//				}
-//			}
-//			if(results.equals("-> ")) {
-//				results += "Invalid";
-//			}
-//			writer.write(results);
+			// use a string builder so the concatenation of multiple expected results is
+			// slightly more efficient
+			StringBuilder expectedResultsStringBuilder = new StringBuilder("-> ");
+			for (ExpectedResult er : expectedResults) {
+				Queue<String> condition = fileParser.prepareCondition(er.getCondition());
+				if(fileParser.compareTestCaseWithCondtions(condition, combos[row], parameterNameIndexMap)) {
+					expectedResultsStringBuilder.append(er.getName()).append(" ");
+				}
+			}
+			if(expectedResultsStringBuilder.toString().equals("-> ")) {
+				expectedResultsStringBuilder.append("Invalid");
+			}
+			writer.write(expectedResultsStringBuilder.toString());
 
 			writer.write("\n");
 		}
