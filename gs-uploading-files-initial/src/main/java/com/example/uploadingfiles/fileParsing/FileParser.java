@@ -288,11 +288,11 @@ public class FileParser {
 			result.setErrorMessage("the condition is empty");
 		}
 		//if there is an extra unmatched bracket
-		if(condition.contains(")") || condition.contains("(")){
+		else if(condition.contains(")") || condition.contains("(")){
 			result.setIsvalid(false);
 			result.setErrorMessage("the condition has extra ( or )");
 		}
-		if(condition.contains("!==") || condition.contains("==")){
+		else if(condition.contains("!==") || condition.contains("==")){
 			result.setIsvalid(false);
 			result.setErrorMessage("the condition has invalid operator(s)");
 
@@ -303,6 +303,7 @@ public class FileParser {
 
 
 		return  result;
+
 
 	}
 

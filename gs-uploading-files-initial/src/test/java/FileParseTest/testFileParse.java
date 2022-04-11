@@ -125,8 +125,6 @@ class testFileParse {
 	void testPrepareCondition1(){
 		FileParser fileParser = new FileParser();
 		Queue<String> condition = fileParser.prepareCondition("A = 0");
-		     //A=
-
 		assertEquals(3,condition.size());
 		assertEquals("A",condition.poll());
 		assertEquals("0",condition.poll());
@@ -138,9 +136,6 @@ class testFileParse {
 		FileParser fileParser = new FileParser();
 
 		Queue<String> condition = fileParser.prepareCondition("InterfaceX-EditState = Saved AND (InterfaceX-RunState = Ready OR InterfaceX-RunState = Running)");
-
-		//A=
-
 		assertNotEquals(1,condition.size());
 		assertNotEquals("A",condition.poll());
 		assertNotEquals("0",condition.poll());
@@ -267,37 +262,38 @@ class testFileParse {
 		assertTrue(result);
 	}
 
+	//testing the isConditionVaild
 
 	@Test
-	void testConditionQueue() {
+	void testIsConditionInValid() {
 		FileParser fileParser = new FileParser();
 		Queue<String> condition = fileParser.prepareCondition("");
 		ConditionResult result =   fileParser.isConditionValid(condition);
-		assertEquals(true,result.isIsvalid());
+		assertTrue(result.isIsvalid());
 
 	}
-	//testing the isConditionVaild
+
 	  @Test
-	  void realTest(){
+	  void testIsConditionValid(){
 		  FileParser fileParser = new FileParser();
 		  Queue<String> condition = fileParser.prepareCondition("InterfaceX-EditState = NotYetSaved AND (InterfaceX-RunState = NeverRun OR InterfaceX-RunState = Running)");
 		 ConditionResult result =   fileParser.isConditionValid(condition);
-		   assertEquals(true, result.isIsvalid());
+		  assertTrue(result.isIsvalid());
 	  }
     @Test
-	void realTestInvalid(){
+	void testIsConditionInValid2(){
 		FileParser fileParser = new FileParser();
 		Queue<String> condition = fileParser.prepareCondition("InterfaceX-EditState = NotYetSaved AND ((InterfaceX-RunState = NeverRun OR InterfaceX-RunState = Running)");
 		ConditionResult result =   fileParser.isConditionValid(condition);
-		assertEquals(false,result.isIsvalid());
+		assertFalse(result.isIsvalid());
 	}
 
 	@Test
-	void realTestInvalid2(){
+	void testIsConditionValid2(){
 		FileParser fileParser = new FileParser();
 		Queue<String> condition = fileParser.prepareCondition("InterfaceX-EditState == NotYetSaved AND (InterfaceX-RunState = NeverRun OR InterfaceX-RunState = Running)");
 		ConditionResult result =   fileParser.isConditionValid(condition);
-		assertEquals(true,result.isIsvalid());
+		assertFalse(result.isIsvalid());
 	}
 
 
