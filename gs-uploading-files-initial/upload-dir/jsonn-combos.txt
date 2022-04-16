@@ -1,0 +1,197 @@
+Parameter Name: Discriminant | Equivalence Classes: [0, LessThanZero, GreaterThanZero]
+Parameter Name: A | Equivalence Classes: [0, 1, Negative, Positive]
+Parameter Name: B | Equivalence Classes: [0, 1, Negative, Positive]
+Parameter Name: C | Equivalence Classes: [0, 1, Negative, Positive]
+
+Test Case 1:   GreaterThanZero Positive Positive Positive -> FirstQuadraticRoot SecondQuadraticRoot 
+Test Case 2:   GreaterThanZero Positive Positive Negative -> FirstQuadraticRoot SecondQuadraticRoot 
+Test Case 3:   GreaterThanZero Positive Positive 1 -> FirstQuadraticRoot SecondQuadraticRoot 
+Test Case 4:   GreaterThanZero Positive Positive 0 -> FirstQuadraticRoot SecondQuadraticRoot 
+Test Case 5:   GreaterThanZero Positive Negative Positive -> FirstQuadraticRoot SecondQuadraticRoot 
+Test Case 6:   GreaterThanZero Positive Negative Negative -> FirstQuadraticRoot SecondQuadraticRoot 
+Test Case 7:   GreaterThanZero Positive Negative 1 -> FirstQuadraticRoot SecondQuadraticRoot 
+Test Case 8:   GreaterThanZero Positive Negative 0 -> FirstQuadraticRoot SecondQuadraticRoot 
+Test Case 9:   GreaterThanZero Positive 1 Positive -> FirstQuadraticRoot SecondQuadraticRoot 
+Test Case 10:  GreaterThanZero Positive 1 Negative -> FirstQuadraticRoot SecondQuadraticRoot 
+Test Case 11:  GreaterThanZero Positive 1 1 -> FirstQuadraticRoot SecondQuadraticRoot 
+Test Case 12:  GreaterThanZero Positive 1 0 -> FirstQuadraticRoot SecondQuadraticRoot 
+Test Case 13:  GreaterThanZero Positive 0 Positive -> FirstQuadraticRoot SecondQuadraticRoot 
+Test Case 14:  GreaterThanZero Positive 0 Negative -> FirstQuadraticRoot SecondQuadraticRoot 
+Test Case 15:  GreaterThanZero Positive 0 1 -> FirstQuadraticRoot SecondQuadraticRoot 
+Test Case 16:  GreaterThanZero Positive 0 0 -> FirstQuadraticRoot SecondQuadraticRoot 
+Test Case 17:  GreaterThanZero Negative Positive Positive -> FirstQuadraticRoot SecondQuadraticRoot 
+Test Case 18:  GreaterThanZero Negative Positive Negative -> FirstQuadraticRoot SecondQuadraticRoot 
+Test Case 19:  GreaterThanZero Negative Positive 1 -> FirstQuadraticRoot SecondQuadraticRoot 
+Test Case 20:  GreaterThanZero Negative Positive 0 -> FirstQuadraticRoot SecondQuadraticRoot 
+Test Case 21:  GreaterThanZero Negative Negative Positive -> FirstQuadraticRoot SecondQuadraticRoot 
+Test Case 22:  GreaterThanZero Negative Negative Negative -> FirstQuadraticRoot SecondQuadraticRoot 
+Test Case 23:  GreaterThanZero Negative Negative 1 -> FirstQuadraticRoot SecondQuadraticRoot 
+Test Case 24:  GreaterThanZero Negative Negative 0 -> FirstQuadraticRoot SecondQuadraticRoot 
+Test Case 25:  GreaterThanZero Negative 1 Positive -> FirstQuadraticRoot SecondQuadraticRoot 
+Test Case 26:  GreaterThanZero Negative 1 Negative -> FirstQuadraticRoot SecondQuadraticRoot 
+Test Case 27:  GreaterThanZero Negative 1 1 -> FirstQuadraticRoot SecondQuadraticRoot 
+Test Case 28:  GreaterThanZero Negative 1 0 -> FirstQuadraticRoot SecondQuadraticRoot 
+Test Case 29:  GreaterThanZero Negative 0 Positive -> FirstQuadraticRoot SecondQuadraticRoot 
+Test Case 30:  GreaterThanZero Negative 0 Negative -> FirstQuadraticRoot SecondQuadraticRoot 
+Test Case 31:  GreaterThanZero Negative 0 1 -> FirstQuadraticRoot SecondQuadraticRoot 
+Test Case 32:  GreaterThanZero Negative 0 0 -> FirstQuadraticRoot SecondQuadraticRoot 
+Test Case 33:  GreaterThanZero 1 Positive Positive -> FirstQuadraticRoot SecondQuadraticRoot 
+Test Case 34:  GreaterThanZero 1 Positive Negative -> FirstQuadraticRoot SecondQuadraticRoot 
+Test Case 35:  GreaterThanZero 1 Positive 1 -> FirstQuadraticRoot SecondQuadraticRoot 
+Test Case 36:  GreaterThanZero 1 Positive 0 -> FirstQuadraticRoot SecondQuadraticRoot 
+Test Case 37:  GreaterThanZero 1 Negative Positive -> FirstQuadraticRoot SecondQuadraticRoot 
+Test Case 38:  GreaterThanZero 1 Negative Negative -> FirstQuadraticRoot SecondQuadraticRoot 
+Test Case 39:  GreaterThanZero 1 Negative 1 -> FirstQuadraticRoot SecondQuadraticRoot 
+Test Case 40:  GreaterThanZero 1 Negative 0 -> FirstQuadraticRoot SecondQuadraticRoot 
+Test Case 41:  GreaterThanZero 1 1 Positive -> FirstQuadraticRoot SecondQuadraticRoot 
+Test Case 42:  GreaterThanZero 1 1 Negative -> FirstQuadraticRoot SecondQuadraticRoot 
+Test Case 43:  GreaterThanZero 1 1 1 -> FirstQuadraticRoot SecondQuadraticRoot 
+Test Case 44:  GreaterThanZero 1 1 0 -> FirstQuadraticRoot SecondQuadraticRoot 
+Test Case 45:  GreaterThanZero 1 0 Positive -> FirstQuadraticRoot SecondQuadraticRoot 
+Test Case 46:  GreaterThanZero 1 0 Negative -> FirstQuadraticRoot SecondQuadraticRoot 
+Test Case 47:  GreaterThanZero 1 0 1 -> FirstQuadraticRoot SecondQuadraticRoot 
+Test Case 48:  GreaterThanZero 1 0 0 -> FirstQuadraticRoot SecondQuadraticRoot 
+Test Case 49:  GreaterThanZero 0 Positive Positive -> UndefinedRoots 
+Test Case 50:  GreaterThanZero 0 Positive Negative -> UndefinedRoots 
+Test Case 51:  GreaterThanZero 0 Positive 1 -> UndefinedRoots 
+Test Case 52:  GreaterThanZero 0 Positive 0 -> UndefinedRoots 
+Test Case 53:  GreaterThanZero 0 Negative Positive -> UndefinedRoots 
+Test Case 54:  GreaterThanZero 0 Negative Negative -> UndefinedRoots 
+Test Case 55:  GreaterThanZero 0 Negative 1 -> UndefinedRoots 
+Test Case 56:  GreaterThanZero 0 Negative 0 -> UndefinedRoots 
+Test Case 57:  GreaterThanZero 0 1 Positive -> UndefinedRoots 
+Test Case 58:  GreaterThanZero 0 1 Negative -> UndefinedRoots 
+Test Case 59:  GreaterThanZero 0 1 1 -> UndefinedRoots 
+Test Case 60:  GreaterThanZero 0 1 0 -> UndefinedRoots 
+Test Case 61:  GreaterThanZero 0 0 Positive -> UndefinedRoots 
+Test Case 62:  GreaterThanZero 0 0 Negative -> UndefinedRoots 
+Test Case 63:  GreaterThanZero 0 0 1 -> UndefinedRoots 
+Test Case 64:  GreaterThanZero 0 0 0 -> UndefinedRoots 
+Test Case 65:  LessThanZero Positive Positive Positive -> SecondImaginaryRoot FirstImaginaryRoot 
+Test Case 66:  LessThanZero Positive Positive Negative -> SecondImaginaryRoot FirstImaginaryRoot 
+Test Case 67:  LessThanZero Positive Positive 1 -> SecondImaginaryRoot FirstImaginaryRoot 
+Test Case 68:  LessThanZero Positive Positive 0 -> SecondImaginaryRoot FirstImaginaryRoot 
+Test Case 69:  LessThanZero Positive Negative Positive -> SecondImaginaryRoot FirstImaginaryRoot 
+Test Case 70:  LessThanZero Positive Negative Negative -> SecondImaginaryRoot FirstImaginaryRoot 
+Test Case 71:  LessThanZero Positive Negative 1 -> SecondImaginaryRoot FirstImaginaryRoot 
+Test Case 72:  LessThanZero Positive Negative 0 -> SecondImaginaryRoot FirstImaginaryRoot 
+Test Case 73:  LessThanZero Positive 1 Positive -> SecondImaginaryRoot FirstImaginaryRoot 
+Test Case 74:  LessThanZero Positive 1 Negative -> SecondImaginaryRoot FirstImaginaryRoot 
+Test Case 75:  LessThanZero Positive 1 1 -> SecondImaginaryRoot FirstImaginaryRoot 
+Test Case 76:  LessThanZero Positive 1 0 -> SecondImaginaryRoot FirstImaginaryRoot 
+Test Case 77:  LessThanZero Positive 0 Positive -> SecondImaginaryRoot FirstImaginaryRoot 
+Test Case 78:  LessThanZero Positive 0 Negative -> SecondImaginaryRoot FirstImaginaryRoot 
+Test Case 79:  LessThanZero Positive 0 1 -> SecondImaginaryRoot FirstImaginaryRoot 
+Test Case 80:  LessThanZero Positive 0 0 -> SecondImaginaryRoot FirstImaginaryRoot 
+Test Case 81:  LessThanZero Negative Positive Positive -> SecondImaginaryRoot FirstImaginaryRoot 
+Test Case 82:  LessThanZero Negative Positive Negative -> SecondImaginaryRoot FirstImaginaryRoot 
+Test Case 83:  LessThanZero Negative Positive 1 -> SecondImaginaryRoot FirstImaginaryRoot 
+Test Case 84:  LessThanZero Negative Positive 0 -> SecondImaginaryRoot FirstImaginaryRoot 
+Test Case 85:  LessThanZero Negative Negative Positive -> SecondImaginaryRoot FirstImaginaryRoot 
+Test Case 86:  LessThanZero Negative Negative Negative -> SecondImaginaryRoot FirstImaginaryRoot 
+Test Case 87:  LessThanZero Negative Negative 1 -> SecondImaginaryRoot FirstImaginaryRoot 
+Test Case 88:  LessThanZero Negative Negative 0 -> SecondImaginaryRoot FirstImaginaryRoot 
+Test Case 89:  LessThanZero Negative 1 Positive -> SecondImaginaryRoot FirstImaginaryRoot 
+Test Case 90:  LessThanZero Negative 1 Negative -> SecondImaginaryRoot FirstImaginaryRoot 
+Test Case 91:  LessThanZero Negative 1 1 -> SecondImaginaryRoot FirstImaginaryRoot 
+Test Case 92:  LessThanZero Negative 1 0 -> SecondImaginaryRoot FirstImaginaryRoot 
+Test Case 93:  LessThanZero Negative 0 Positive -> SecondImaginaryRoot FirstImaginaryRoot 
+Test Case 94:  LessThanZero Negative 0 Negative -> SecondImaginaryRoot FirstImaginaryRoot 
+Test Case 95:  LessThanZero Negative 0 1 -> SecondImaginaryRoot FirstImaginaryRoot 
+Test Case 96:  LessThanZero Negative 0 0 -> SecondImaginaryRoot FirstImaginaryRoot 
+Test Case 97:  LessThanZero 1 Positive Positive -> SecondImaginaryRoot FirstImaginaryRoot 
+Test Case 98:  LessThanZero 1 Positive Negative -> SecondImaginaryRoot FirstImaginaryRoot 
+Test Case 99:  LessThanZero 1 Positive 1 -> SecondImaginaryRoot FirstImaginaryRoot 
+Test Case 100: LessThanZero 1 Positive 0 -> SecondImaginaryRoot FirstImaginaryRoot 
+Test Case 101: LessThanZero 1 Negative Positive -> SecondImaginaryRoot FirstImaginaryRoot 
+Test Case 102: LessThanZero 1 Negative Negative -> SecondImaginaryRoot FirstImaginaryRoot 
+Test Case 103: LessThanZero 1 Negative 1 -> SecondImaginaryRoot FirstImaginaryRoot 
+Test Case 104: LessThanZero 1 Negative 0 -> SecondImaginaryRoot FirstImaginaryRoot 
+Test Case 105: LessThanZero 1 1 Positive -> SecondImaginaryRoot FirstImaginaryRoot 
+Test Case 106: LessThanZero 1 1 Negative -> SecondImaginaryRoot FirstImaginaryRoot 
+Test Case 107: LessThanZero 1 1 1 -> SecondImaginaryRoot FirstImaginaryRoot 
+Test Case 108: LessThanZero 1 1 0 -> SecondImaginaryRoot FirstImaginaryRoot 
+Test Case 109: LessThanZero 1 0 Positive -> SecondImaginaryRoot FirstImaginaryRoot 
+Test Case 110: LessThanZero 1 0 Negative -> SecondImaginaryRoot FirstImaginaryRoot 
+Test Case 111: LessThanZero 1 0 1 -> SecondImaginaryRoot FirstImaginaryRoot 
+Test Case 112: LessThanZero 1 0 0 -> SecondImaginaryRoot FirstImaginaryRoot 
+Test Case 113: LessThanZero 0 Positive Positive -> UndefinedRoots 
+Test Case 114: LessThanZero 0 Positive Negative -> UndefinedRoots 
+Test Case 115: LessThanZero 0 Positive 1 -> UndefinedRoots 
+Test Case 116: LessThanZero 0 Positive 0 -> UndefinedRoots 
+Test Case 117: LessThanZero 0 Negative Positive -> UndefinedRoots 
+Test Case 118: LessThanZero 0 Negative Negative -> UndefinedRoots 
+Test Case 119: LessThanZero 0 Negative 1 -> UndefinedRoots 
+Test Case 120: LessThanZero 0 Negative 0 -> UndefinedRoots 
+Test Case 121: LessThanZero 0 1 Positive -> UndefinedRoots 
+Test Case 122: LessThanZero 0 1 Negative -> UndefinedRoots 
+Test Case 123: LessThanZero 0 1 1 -> UndefinedRoots 
+Test Case 124: LessThanZero 0 1 0 -> UndefinedRoots 
+Test Case 125: LessThanZero 0 0 Positive -> UndefinedRoots 
+Test Case 126: LessThanZero 0 0 Negative -> UndefinedRoots 
+Test Case 127: LessThanZero 0 0 1 -> UndefinedRoots 
+Test Case 128: LessThanZero 0 0 0 -> UndefinedRoots 
+Test Case 129: 0 Positive Positive Positive -> OneQuadraticRoot 
+Test Case 130: 0 Positive Positive Negative -> OneQuadraticRoot 
+Test Case 131: 0 Positive Positive 1 -> OneQuadraticRoot 
+Test Case 132: 0 Positive Positive 0 -> OneQuadraticRoot 
+Test Case 133: 0 Positive Negative Positive -> OneQuadraticRoot 
+Test Case 134: 0 Positive Negative Negative -> OneQuadraticRoot 
+Test Case 135: 0 Positive Negative 1 -> OneQuadraticRoot 
+Test Case 136: 0 Positive Negative 0 -> OneQuadraticRoot 
+Test Case 137: 0 Positive 1 Positive -> OneQuadraticRoot 
+Test Case 138: 0 Positive 1 Negative -> OneQuadraticRoot 
+Test Case 139: 0 Positive 1 1 -> OneQuadraticRoot 
+Test Case 140: 0 Positive 1 0 -> OneQuadraticRoot 
+Test Case 141: 0 Positive 0 Positive -> OneQuadraticRoot 
+Test Case 142: 0 Positive 0 Negative -> OneQuadraticRoot 
+Test Case 143: 0 Positive 0 1 -> OneQuadraticRoot 
+Test Case 144: 0 Positive 0 0 -> OneQuadraticRoot 
+Test Case 145: 0 Negative Positive Positive -> OneQuadraticRoot 
+Test Case 146: 0 Negative Positive Negative -> OneQuadraticRoot 
+Test Case 147: 0 Negative Positive 1 -> OneQuadraticRoot 
+Test Case 148: 0 Negative Positive 0 -> OneQuadraticRoot 
+Test Case 149: 0 Negative Negative Positive -> OneQuadraticRoot 
+Test Case 150: 0 Negative Negative Negative -> OneQuadraticRoot 
+Test Case 151: 0 Negative Negative 1 -> OneQuadraticRoot 
+Test Case 152: 0 Negative Negative 0 -> OneQuadraticRoot 
+Test Case 153: 0 Negative 1 Positive -> OneQuadraticRoot 
+Test Case 154: 0 Negative 1 Negative -> OneQuadraticRoot 
+Test Case 155: 0 Negative 1 1 -> OneQuadraticRoot 
+Test Case 156: 0 Negative 1 0 -> OneQuadraticRoot 
+Test Case 157: 0 Negative 0 Positive -> OneQuadraticRoot 
+Test Case 158: 0 Negative 0 Negative -> OneQuadraticRoot 
+Test Case 159: 0 Negative 0 1 -> OneQuadraticRoot 
+Test Case 160: 0 Negative 0 0 -> OneQuadraticRoot 
+Test Case 161: 0 1 Positive Positive -> OneQuadraticRoot 
+Test Case 162: 0 1 Positive Negative -> OneQuadraticRoot 
+Test Case 163: 0 1 Positive 1 -> OneQuadraticRoot 
+Test Case 164: 0 1 Positive 0 -> OneQuadraticRoot 
+Test Case 165: 0 1 Negative Positive -> OneQuadraticRoot 
+Test Case 166: 0 1 Negative Negative -> OneQuadraticRoot 
+Test Case 167: 0 1 Negative 1 -> OneQuadraticRoot 
+Test Case 168: 0 1 Negative 0 -> OneQuadraticRoot 
+Test Case 169: 0 1 1 Positive -> OneQuadraticRoot 
+Test Case 170: 0 1 1 Negative -> OneQuadraticRoot 
+Test Case 171: 0 1 1 1 -> OneQuadraticRoot 
+Test Case 172: 0 1 1 0 -> OneQuadraticRoot 
+Test Case 173: 0 1 0 Positive -> OneQuadraticRoot 
+Test Case 174: 0 1 0 Negative -> OneQuadraticRoot 
+Test Case 175: 0 1 0 1 -> OneQuadraticRoot 
+Test Case 176: 0 1 0 0 -> OneQuadraticRoot 
+Test Case 177: 0 0 Positive Positive -> UndefinedRoots 
+Test Case 178: 0 0 Positive Negative -> UndefinedRoots 
+Test Case 179: 0 0 Positive 1 -> UndefinedRoots 
+Test Case 180: 0 0 Positive 0 -> UndefinedRoots 
+Test Case 181: 0 0 Negative Positive -> UndefinedRoots 
+Test Case 182: 0 0 Negative Negative -> UndefinedRoots 
+Test Case 183: 0 0 Negative 1 -> UndefinedRoots 
+Test Case 184: 0 0 Negative 0 -> UndefinedRoots 
+Test Case 185: 0 0 1 Positive -> UndefinedRoots 
+Test Case 186: 0 0 1 Negative -> UndefinedRoots 
+Test Case 187: 0 0 1 1 -> UndefinedRoots 
+Test Case 188: 0 0 1 0 -> UndefinedRoots 
+Test Case 189: 0 0 0 Positive -> UndefinedRoots 
+Test Case 190: 0 0 0 Negative -> UndefinedRoots 
+Test Case 191: 0 0 0 1 -> UndefinedRoots 
+Test Case 192: 0 0 0 0 -> UndefinedRoots 
