@@ -436,6 +436,16 @@ public class FileParser {
 		return linkParamToColumn;
 	}
 
+	public HashMap<Integer,String> getParamMapByIndex(ArrayList<Parameter> arr) {
+		HashMap< Integer,String> linkParamToColumn = new HashMap<>();
+		for (int i = 0; i < arr.size(); i++) {
+			String paramName = arr.get(i).getName();
+			//parameter name is the key while the value is the column index that corresponds to it
+			linkParamToColumn.put(i,paramName);
+		}
+		return linkParamToColumn;
+	}
+
 
 
 	/**

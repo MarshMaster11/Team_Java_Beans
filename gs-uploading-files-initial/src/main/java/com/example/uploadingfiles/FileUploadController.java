@@ -109,7 +109,7 @@ public class FileUploadController {
 		// make the map after generating the test cases in case the order of the parameters
 		// changes somehow
 		Map<String, Integer> parameterNameIndexMap = fileParser.getParamMap(arrList);
-
+		Map< Integer,String> parameterNameIndexMapByIndex = fileParser.getParamMapByIndex(arrList);
 		// this is used to write the test case combinations to the text file.
 		int testCaseNumber = 1;
 		for (int row = 0; row < combos.length; row++) {
@@ -122,7 +122,12 @@ public class FileUploadController {
 			}
 			testCaseNumber++;
 			for (int column = 0; column < combos[row].length; column++) {
-				writer.write(combos[row][column] + " ");
+				String paramName = parameterNameIndexMapByIndex.get(column);
+				String output = "When "+ paramName + "= "+  combos[row][column] +" ";
+				writer.write(output);
+
+				//writer.write(combos[row][column] + " ");
+
 			}
 
 			// use a string builder so the concatenation of multiple expected results is
@@ -137,7 +142,7 @@ public class FileUploadController {
 			if(expectedResultsStringBuilder.toString().equals("-> ")) {
 				expectedResultsStringBuilder.append("Invalid");
 			}
-			writer.write(expectedResultsStringBuilder.toString());
+			writer.write( "Expected result = " +expectedResultsStringBuilder.toString());
 
 			writer.write("\n");
 		}
