@@ -83,12 +83,12 @@ main {margin-left: 25%; margin-right: 25%; padding: 10px; text-align: center;
 	<div>
 		<h3> Your completed file(s) here: </h3>
 		<ul>
-			<li th:each="file : ${files}">
+			<th:block th:each="file : ${files}">
 				<!---This commented out code is the original version that lists all the files in the StorageService, the current version
-				checks if the file to be listed is a json, and if it is, ignores it. Note: There is still an extraneous bullet point, which I believe has to do with how lists render. This will be looked into in the near future. --->
+				checks if the file to be listed is a json, and if it is, ignores it. --->
 				<!--- <a th:href="${file}" th:text="${file}"></a> --->
-				<a th:unless="${file.endsWith('.json')}"><a th:href="${file}" th:text="${file}"></a></a>
-			</li>
+				<li th:unless="${file.endsWith('.json')}"><a th:href="${file}" th:text="${file}"></a></li>
+			</th:block>
 		</ul>
 	</div>
 	
