@@ -109,7 +109,7 @@ public class FileUploadController {
 		// make the map after generating the test cases in case the order of the parameters
 		// changes somehow
 		Map<String, Integer> parameterNameIndexMap = fileParser.getParamMap(arrList);
-		Map< Integer,String> parameterNameIndexMapByIndex = fileParser.getParamMapByIndex(arrList);
+		//Map< Integer,String> parameterNameIndexMapByIndex = fileParser.getParamMapByIndex(arrList);
 		// this is used to write the test case combinations to the text file.
 		int testCaseNumber = 1;
 		for (int row = 0; row < combos.length; row++) {
@@ -122,8 +122,9 @@ public class FileUploadController {
 			}
 			testCaseNumber++;
 			for (int column = 0; column < combos[row].length; column++) {
-				String paramName = parameterNameIndexMapByIndex.get(column);
-				String output = "When "+ paramName + "= "+  combos[row][column] +" ";
+				String paramName = arrList.get(column).getName();
+				String conjunction = column == 0 ? "When " : "and ";
+				String output = conjunction + paramName + " = "+  combos[row][column] +" ";
 				writer.write(output);
 
 				//writer.write(combos[row][column] + " ");
@@ -132,17 +133,17 @@ public class FileUploadController {
 
 			// use a string builder so the concatenation of multiple expected results is
 			// slightly more efficient
-			StringBuilder expectedResultsStringBuilder = new StringBuilder("-> ");
+			StringBuilder expectedResultsStringBuilder = new StringBuilder("");
 			for (ExpectedResult er : expectedResults) {
 				Queue<String> condition = fileParser.prepareCondition(er.getCondition());
 				if(fileParser.compareTestCaseWithCondtions(condition, combos[row], parameterNameIndexMap)) {
 					expectedResultsStringBuilder.append(er.getName()).append(" ");
 				}
 			}
-			if(expectedResultsStringBuilder.toString().equals("-> ")) {
+			if(expectedResultsStringBuilder.toString().equals("")) {
 				expectedResultsStringBuilder.append("Invalid");
 			}
-			writer.write( "Expected result = " +expectedResultsStringBuilder.toString());
+			writer.write( "- Expected result => " +expectedResultsStringBuilder.toString());
 
 			writer.write("\n");
 		}
