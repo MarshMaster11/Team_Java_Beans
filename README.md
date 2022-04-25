@@ -60,7 +60,7 @@ Once the service is started, type localhost:8080 into your browser to pull up th
  
  ### License
  
- Copyright (c) 2012-2022 Team Java Beans
+ Copyright (c) 2022 Team Java Beans
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
