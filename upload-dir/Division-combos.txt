@@ -1,0 +1,12 @@
+Parameter Name: Divisor | Equivalence Classes: [0, Negative, Positive]
+Parameter Name: Dividend | Equivalence Classes: [0, Negative, Positive]
+
+Test Case 1:   When Divisor = Positive and Dividend = Positive - Expected result => Positive 
+Test Case 2:   When Divisor = Positive and Dividend = Negative - Expected result => Negative 
+Test Case 3:   When Divisor = Positive and Dividend = 0 - Expected result => 0 
+Test Case 4:   When Divisor = Negative and Dividend = Positive - Expected result => Negative 
+Test Case 5:   When Divisor = Negative and Dividend = Negative - Expected result => Positive 
+Test Case 6:   When Divisor = Negative and Dividend = 0 - Expected result => 0 
+Test Case 7:   When Divisor = 0 and Dividend = Positive - Expected result => Invalid
+Test Case 8:   When Divisor = 0 and Dividend = Negative - Expected result => Invalid
+Test Case 9:   When Divisor = 0 and Dividend = 0 - Expected result => Invalid

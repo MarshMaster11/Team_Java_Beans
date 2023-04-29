@@ -140,7 +140,7 @@ public class FileParser {
 	// test
 
 	/**
-	 * method: parseParameters
+	 * method: parseExpectedResults
 	 * takes a DataObject and returns an ArrayList of expected results for test cases.
 	 * finds an expected result's name and the condition under which it applies to a test case.
 	 * generate an ExpectedResult object based on them.
