@@ -4,7 +4,7 @@
 <p>The purpose of this project is to implement a functional API that takes the name of an input file as its parameter and return the name of an output file as its only result. The input file will specify the functionality of software under test using the category-partition method. The API will apply the category-partition method to the formatted contents of the input file, generating test cases based on the specification, and writing the results for them to an output file in the Cucumber "given-when-then" notation. The test cases will specify the selection of equivalence classes for the parameter and the expected test results when the test has been running.</p>
 
 <h3>Client</h3>
-Mr.Jim Wood
+Mr. Jim Wood
 
 ### Link
 
@@ -59,3 +59,24 @@ Once the service is started, type localhost:8080 into your browser to pull up th
  [Jira link](https://jira.ggc.edu/projects/TJB/issues/TJB-4?filter=allopenissues)
  
  ### License
+ 
+ Copyright (c) 2022 Team Java Beans
+
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+"Software"), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
