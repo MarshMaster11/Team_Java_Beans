@@ -48,7 +48,7 @@ Once the service is started, type localhost:8080 into your browser to pull up th
   - Lead Programmer & Client Liaison 🦀
 - **Ephrem Engida** (eengida@ggc.edu)
   - Team Manager & UI/UX Design 🔥
-- **Matteo Kitic** (mkitic@ggc.edu)
+- **Matt. K.** (***@ggc.edu)
   - Data Modeler 🐯
  ### Technologies
   Java Spring
